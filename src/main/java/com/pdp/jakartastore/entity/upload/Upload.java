@@ -4,9 +4,6 @@ import com.pdp.jakartastore.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
-import org.hibernate.validator.constraints.pl.NIP;
-
-import java.time.LocalDateTime;
 
 /**
  * @author Aliabbos Ashurov
