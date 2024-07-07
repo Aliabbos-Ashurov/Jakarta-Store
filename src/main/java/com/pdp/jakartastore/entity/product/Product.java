@@ -1,14 +1,12 @@
 package com.pdp.jakartastore.entity.product;
 
 import com.pdp.jakartastore.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.pdp.jakartastore.entity.upload.Upload;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * @author Aliabbos Ashurov
@@ -19,6 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @ToString
+@SuperBuilder(toBuilder = true)
 public class Product extends BaseEntity {
 
     @Column(nullable = false, length = 100)
@@ -28,9 +27,19 @@ public class Product extends BaseEntity {
     @Min(value = 100)
     private double price;
 
-    @Builder(builderMethodName = "childBuilder")
-    public Product(String name, double price) {
-        this.name = name;
-        this.price = price;
+    @Column(nullable = false)
+    private String description;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @Column(name = "on_discount")
+    private boolean onDiscount = false;
+
+    @OneToOne
+    private Upload image;
+
+    private enum Category {
+        CLOTHES, TECHNOLOGY, FOOD, ACCESSORIES
     }
 }

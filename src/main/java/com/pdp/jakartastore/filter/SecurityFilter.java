@@ -30,7 +30,6 @@ public class SecurityFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
 
-        String userId = req.getParameter("user_id");
     }
 
     @Override

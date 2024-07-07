@@ -2,14 +2,11 @@ package com.pdp.jakartastore.entity.user;
 
 import com.pdp.jakartastore.entity.BaseEntity;
 import com.pdp.jakartastore.entity.upload.Upload;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.time.LocalDateTime;
+import lombok.experimental.SuperBuilder;
 
 /**
  * @author Aliabbos Ashurov
@@ -19,12 +16,17 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@SuperBuilder(toBuilder = true)
+@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
+@NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
 public class User extends BaseEntity {
 
+    @NotBlank
     @Column(unique = true, nullable = false)
     private String username;
 
     @NotBlank
+    @Column(nullable = false)
     private String password;
 
     @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = ":::The pattern did not match the email:::")
@@ -34,14 +36,13 @@ public class User extends BaseEntity {
     @Column(unique = true)
     private String phoneNumber;
 
-    @OneToOne
-    private Upload upload;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
 
-    @Builder(builderMethodName = "childBuilder")
-    public User(String username, String password, String email, String phoneNumber) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    @OneToOne
+    private Upload profileImage;
+
+    private enum Status {
+        NOT_ACTIVE, ACTIVE, DELETED
     }
 }
