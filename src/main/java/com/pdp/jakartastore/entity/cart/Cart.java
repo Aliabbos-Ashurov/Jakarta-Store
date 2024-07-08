@@ -22,5 +22,6 @@ public class Cart extends BaseEntity {
     @Column(nullable = false)
     private User user;
 
+    @Column(name = "is_paid")
     private boolean isPaid = false;
 }

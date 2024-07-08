@@ -33,12 +33,13 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(unique = true)
+    @Column(unique = true,name = "phone_number")
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
+    @Column(name = "profil_image")
     @OneToOne
     private Upload profileImage;
 

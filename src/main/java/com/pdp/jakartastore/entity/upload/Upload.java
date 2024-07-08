@@ -1,14 +1,10 @@
 package com.pdp.jakartastore.entity.upload;
 
 import com.pdp.jakartastore.entity.BaseEntity;
-import com.pdp.jakartastore.entity.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-
-import java.time.LocalDateTime;
 
 /**
  * @author Aliabbos Ashurov
@@ -21,13 +17,13 @@ import java.time.LocalDateTime;
 @SuperBuilder(toBuilder = true)
 public class Upload extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "generated_name")
     private String generatedName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "file_name")
     private String fileName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "file_type")
     private String fileType;
 
     @Column(nullable = false)

@@ -17,8 +17,10 @@ public class UserDAO extends BaseDAO<User, String> {
             User user = entityManager.createNamedQuery("User.findByEmail", User.class)
                     .setParameter("email", email)
                     .getSingleResult();
+            commit();
             return Optional.ofNullable(user);
         } catch (NoResultException e) {
+            commit();
             return Optional.empty();
         } catch (Exception e) {
             rollBack();
@@ -35,6 +37,7 @@ public class UserDAO extends BaseDAO<User, String> {
             commit();
             return Optional.ofNullable(user);
         } catch (NoResultException e) {
+            commit();
             return Optional.empty();
         } catch (Exception e) {
             rollBack();
