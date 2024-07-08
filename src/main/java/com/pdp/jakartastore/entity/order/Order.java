@@ -2,6 +2,7 @@ package com.pdp.jakartastore.entity.order;
 
 import com.pdp.jakartastore.entity.BaseEntity;
 import com.pdp.jakartastore.entity.cart.Cart;
+import com.pdp.jakartastore.entity.product.Product;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -22,6 +23,9 @@ public class Order extends BaseEntity {
 
     @ManyToOne
     private Cart cart;
+
+    @ManyToOne
+    private Product product;
 
     @Builder.Default
     @Column(nullable = false)

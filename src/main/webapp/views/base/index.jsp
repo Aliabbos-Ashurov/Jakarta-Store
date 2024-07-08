@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift Shop</title>
-    <link rel="stylesheet" href="../resources/css/styles.css">
+    <link rel="stylesheet" href="../../resources/css/styles.css">
 </head>
 <body>
 <!-- Header -->
 <header>
     <nav>
         <ul>
-            <li><a href="#">HOME</a></li>
+            <li><a href="index.jsp">HOME</a></li>
             <li><a href="#">SHOP</a></li>
             <li><a href="#">WHY US</a></li>
             <li><a href="#">TESTIMONIAL</a></li>
             <li><a href="#">CONTACT US</a></li>
-            <li><a href="#">Login</a></li>
         </ul>
     </nav>
 </header>
@@ -32,7 +31,7 @@
         <button>Contact Us</button>
     </div>
     <div class="welcome-image">
-        <img src="../resources/img/slider-img.png" alt="Girl with shopping bags">
+        <img src="../../resources/img/slider-img.png" alt="Girl with shopping bags">
     </div>
 </section>
 
@@ -42,49 +41,49 @@
     <div class="product-grid">
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p1.png" alt="Ring">
+            <img src="../../resources/img/p1.png" alt="Ring">
             <p>Ring</p>
             <p class="price">$200</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p2.png" alt="Watch">
+            <img src="../../resources/img/p2.png" alt="Watch">
             <p>Watch</p>
             <p class="price">$300</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p3.png" alt="Teddy Bear">
+            <img src="../../resources/img/p3.png" alt="Teddy Bear">
             <p>Teddy Bear</p>
             <p class="price">$110</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p4.png" alt="Flower Bouquet">
+            <img src="../../resources/img/p4.png" alt="Flower Bouquet">
             <p>Flower Bouquet</p>
             <p class="price">$45</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p5.png" alt="Teddy Bear">
+            <img src="../../resources/img/p5.png" alt="Teddy Bear">
             <p>Teddy Bear</p>
             <p class="price">$95</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p6.png" alt="Flower Bouquet">
+            <img src="../../resources/img/p6.png" alt="Flower Bouquet">
             <p>Flower Bouquet</p>
             <p class="price">$70</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p7.png" alt="Watch">
+            <img src="../../resources/img/p7.png" alt="Watch">
             <p>Watch</p>
             <p class="price">$400</p>
         </div>
         <div class="product">
             <span>New</span>
-            <img src="../resources/img/p8.png" alt="Ring">
+            <img src="../../resources/img/p8.png" alt="Ring">
             <p>Ring</p>
             <p class="price">$450</p>
         </div>
