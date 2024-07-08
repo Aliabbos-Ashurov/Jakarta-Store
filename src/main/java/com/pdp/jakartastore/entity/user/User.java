@@ -53,6 +53,6 @@ public class User extends BaseEntity {
     }
 
     private enum Role {
-        ADMIN, USER
+        ADMIN, USER, SELLER
     }
 }
