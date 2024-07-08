@@ -33,6 +33,7 @@ public class Product extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    @Builder.Default
     @Column(name = "on_discount")
     private boolean onDiscount = false;
 

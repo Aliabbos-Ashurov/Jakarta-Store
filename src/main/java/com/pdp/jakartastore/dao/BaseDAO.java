@@ -56,7 +56,10 @@ public abstract class BaseDAO<T extends BaseEntity, ID extends Serializable> {
 
     @SuppressWarnings("unchecked")
     public List<T> findAll() {
-        return entityManager.createQuery("from " + persistenceClass.getSimpleName()).getResultList();
+        begin();
+        List<T> resultList = (List<T>) entityManager.createQuery("from " + persistenceClass.getSimpleName()).getResultList();
+        commit();
+        return resultList;
     }
 
 

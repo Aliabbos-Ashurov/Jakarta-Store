@@ -1,6 +1,7 @@
 package com.pdp.jakartastore.dao;
 
 import com.pdp.jakartastore.entity.user.User;
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.NoResultException;
 
 import java.util.Optional;
@@ -10,6 +11,28 @@ import java.util.Optional;
  * @since 07/July/2024  16:32
  **/
 public class UserDAO extends BaseDAO<User, String> {
+
+    public static void main(String[] args) {
+
+    }
+
+    public User addUser(User user) {
+        try {
+            begin();
+            Optional<User> existingUser = findByUsername(user.getUsername());
+            if (existingUser.isEmpty()) {
+                entityManager.persist(user);
+                commit();
+            } else {
+                rollBack();
+                throw new EntityExistsException("USER with username " + user.getUsername() + " already exists.");
+            }
+        } catch (Exception e) {
+            rollBack();
+            System.err.println(e.getMessage());
+        }
+        return user;
+    }
 
     public Optional<User> findByEmail(String email) {
         try {

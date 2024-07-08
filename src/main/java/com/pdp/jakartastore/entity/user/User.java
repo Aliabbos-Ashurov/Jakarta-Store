@@ -33,10 +33,15 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(unique = true,name = "phone_number")
+    @Column(unique = true, name = "phone_number")
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private Role role = Role.USER;
+
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
     private Status status = Status.ACTIVE;
 
     @Column(name = "profil_image")
@@ -45,5 +50,9 @@ public class User extends BaseEntity {
 
     private enum Status {
         NOT_ACTIVE, ACTIVE, DELETED
+    }
+
+    private enum Role {
+        ADMIN, USER
     }
 }

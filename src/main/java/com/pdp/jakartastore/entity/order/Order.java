@@ -23,6 +23,7 @@ public class Order extends BaseEntity {
     @ManyToOne
     private Cart cart;
 
+    @Builder.Default
     @Column(nullable = false)
     private Integer quantity = 1;
 }

@@ -29,7 +29,7 @@ public class SecurityFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
-
+        filterChain.doFilter(req, res);
     }
 
     @Override
