@@ -25,7 +25,7 @@
         String IMAGE_NOT_FOUND_URL = "../../resources/img/image_not_found.png";
         Product product = (Product) request.getAttribute("product");
         Upload image = product.getImage();
-        String imageUrl = image != null ? image.getExtension() + image.getFileName() + "." + image.getFileType() : IMAGE_NOT_FOUND_URL;
+        String imageUrl = image != null ? image.getExtension() + image.getGeneratedName() : IMAGE_NOT_FOUND_URL;
     %>
     <div class="left-half animate__animated animate__fadeInLeft">
         <div class="product-image">

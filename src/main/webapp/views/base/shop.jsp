@@ -31,13 +31,14 @@
                 List<Product> products = productService.findAll();
                 for (Product product : products) {
                     Upload image = product.getImage();
-                    String imageUrl = image != null ? image.getExtension() + image.getFileName() + "." + image.getFileType() : IMAGE_NOT_FOUND_URL;
+                    String imageUrl = image != null ? image.getExtension() + image.getGeneratedName() : IMAGE_NOT_FOUND_URL;
             %>
             <div class="product">
                 <form action="${pageContext.request.contextPath}/views/base/shop" method="post">
                     <input type="hidden" name="product_id" value="<%= product.getId() %>">
                     <div class="product-image">
                         <img src="<%= imageUrl %>" alt="<%= product.getName() %>">
+                        <img src="">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name"><%= product.getName() %>
