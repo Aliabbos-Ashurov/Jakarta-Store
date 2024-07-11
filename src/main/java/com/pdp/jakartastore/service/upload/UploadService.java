@@ -1,6 +1,6 @@
 package com.pdp.jakartastore.service.upload;
 
-import com.pdp.jakartastore.dao.UploadDAO;
+import com.pdp.jakartastore.dao.upload.UploadDAO;
 import com.pdp.jakartastore.entity.upload.Upload;
 import com.pdp.jakartastore.service.BaseService;
 

@@ -1,6 +1,7 @@
 package com.pdp.jakartastore.entity.product;
 
 import com.pdp.jakartastore.entity.BaseEntity;
+import com.pdp.jakartastore.entity.shop.Shop;
 import com.pdp.jakartastore.entity.upload.Upload;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -27,20 +28,19 @@ public class Product extends BaseEntity {
     @Min(value = 100)
     private double price;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    private Category category;
+    @Column(nullable = false)
+    private String category;
 
     @Builder.Default
     @Column(name = "on_discount")
     private boolean onDiscount = false;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Shop shop;
+
     @OneToOne
     private Upload image;
-
-    private enum Category {
-        CLOTHES, TECHNOLOGY, FOOD, ACCESSORIES
-    }
 }

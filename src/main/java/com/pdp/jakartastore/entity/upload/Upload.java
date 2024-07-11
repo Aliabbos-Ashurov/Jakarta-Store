@@ -26,7 +26,6 @@ public class Upload extends BaseEntity {
     @Column(nullable = false, name = "file_type")
     private String fileType;
 
-    @Column(nullable = false)
     private long size;
 
     @Column(nullable = false)

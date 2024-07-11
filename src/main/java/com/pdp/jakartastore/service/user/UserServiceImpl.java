@@ -1,6 +1,6 @@
 package com.pdp.jakartastore.service.user;
 
-import com.pdp.jakartastore.entity.user.User;
+import com.pdp.jakartastore.entity.user.Users;
 
 import java.util.List;
 
@@ -10,27 +10,32 @@ import java.util.List;
  **/
 public class UserServiceImpl implements UserService {
     @Override
-    public User findByUsername(String username) {
+    public Users findByUsername(String username) {
         return dao.findByUsername(username).orElse(null);
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Users findByEmail(String email) {
         return dao.findByEmail(email).orElse(null);
     }
 
     @Override
-    public User addUser(User user) {
-        return dao.addUser(user);
+    public Users check(String username, String password) {
+        return dao.check(username, password);
     }
 
     @Override
-    public User save(User entity) {
+    public Users addUser(Users users) {
+        return dao.addUser(users);
+    }
+
+    @Override
+    public Users save(Users entity) {
         return dao.save(entity);
     }
 
     @Override
-    public boolean update(User entity) {
+    public boolean update(Users entity) {
         return dao.update(entity);
     }
 
@@ -40,12 +45,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(String id) {
+    public Users findById(String id) {
         return dao.findById(id);
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Users> findAll() {
         return dao.findAll();
     }
 }

@@ -1,0 +1,129 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scroll bars from appearing on the body */
+    background: linear-gradient(45deg, #9534eb, #7b2cc3, #9534eb, #7b2cc3); /* Gradient colors */
+    background-size: 400% 400%; /* Larger size for smooth animation */
+    animation: backgroundAnimation 15s infinite; /* Adjust timing and effect as needed */
+}
+
+.container {
+    max-width: 600px; /* Adjusted max-width for better responsiveness */
+    margin: 20px; /* Added margin to separate container from edges */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    z-index: 1; /* Ensure content appears above background */
+    position: relative; /* Ensure content is positioned relative to the body */
+    animation: fadeIn 1s ease-out; /* Fade-in animation for content */
+    overflow-y: auto; /* Enable vertical scroll */
+    height: calc(100% - 40px); /* Adjust height to fit within viewport */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #9534eb; /* Adjusted text color for better visibility against background */
+    margin-bottom: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+    max-width: 400px; /* Adjusted form width for better layout */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input[type="file"] {
+    margin-top: 5px;
+}
+
+.btn {
+    background-color: #9534eb;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #7b2cc3;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logout-link {
+    color: #9534eb;
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+/* Background color animation */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Fade-in animation for content */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

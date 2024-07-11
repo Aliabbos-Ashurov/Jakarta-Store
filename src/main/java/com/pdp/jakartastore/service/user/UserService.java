@@ -1,20 +1,21 @@
 package com.pdp.jakartastore.service.user;
 
-import com.pdp.jakartastore.dao.UserDAO;
-import com.pdp.jakartastore.entity.user.User;
+import com.pdp.jakartastore.dao.user.UserDAO;
+import com.pdp.jakartastore.entity.user.Users;
 import com.pdp.jakartastore.service.BaseService;
 
 /**
  * @author Aliabbos Ashurov
  * @since 08/July/2024  09:43
  **/
-public interface UserService extends BaseService<User, String> {
+public interface UserService extends BaseService<Users, String> {
 
     UserDAO dao = new UserDAO();
 
-    User findByUsername(String username);
+    Users findByUsername(String username);
 
-    User findByEmail(String email);
+    Users findByEmail(String email);
 
-    User addUser(User user);
+    Users addUser(Users users);
+    Users check(String username, String password);
 }

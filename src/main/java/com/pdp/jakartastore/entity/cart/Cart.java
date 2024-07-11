@@ -1,7 +1,7 @@
 package com.pdp.jakartastore.entity.cart;
 
 import com.pdp.jakartastore.entity.BaseEntity;
-import com.pdp.jakartastore.entity.user.User;
+import com.pdp.jakartastore.entity.user.Users;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -18,9 +18,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class Cart extends BaseEntity {
 
-    @ManyToOne
-    @Column(nullable = false)
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Users users;
 
     @Builder.Default
     @Column(name = "is_paid")
