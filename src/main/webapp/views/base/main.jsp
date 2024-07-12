@@ -97,7 +97,7 @@
     <div class="product-grid">
         <%
             ProductService productService = new ProductServiceImpl();
-            List<Product> products = productService.findAll();
+            List<Product> products = productService.findAllByNamedQuery();
             for (Product product : products) {
                 Upload image = product.getImage();
                 //                               ../../resources/img/     578ca6df-da55-4704-9b7f-26db755f96c4-iphone.png

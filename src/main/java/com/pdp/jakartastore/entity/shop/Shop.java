@@ -27,6 +27,6 @@ public class Shop extends BaseEntity {
     private String address;
     private String phone;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne//(cascade = CascadeType.ALL)
     private Users owner;
 }

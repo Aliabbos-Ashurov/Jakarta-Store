@@ -16,4 +16,6 @@ public interface ProductService extends BaseService<Product, String> {
     boolean deleteForce(String productId);
 
     List<Product> findByShopId(String shopId);
+
+    List<Product> findAllByNamedQuery();
 }

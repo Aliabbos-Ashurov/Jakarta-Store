@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
+@NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
 @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
 public class Users extends BaseEntity {
 

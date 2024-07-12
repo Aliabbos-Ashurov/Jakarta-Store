@@ -19,6 +19,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @ToString
 @SuperBuilder(toBuilder = true)
+@NamedQuery(name = "Product.all", query = "SELECT p FROM Product p")
 public class Product extends BaseEntity {
 
     @Column(nullable = false, length = 100)

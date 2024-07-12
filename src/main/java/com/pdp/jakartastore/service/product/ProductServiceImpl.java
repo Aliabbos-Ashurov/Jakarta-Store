@@ -16,6 +16,11 @@ public class ProductServiceImpl implements ProductService {
     private final UploadService uploadService = new UploadServiceImpl();
 
     @Override
+    public List<Product> findAllByNamedQuery() {
+        return dao.findAllByNamedQuery();
+    }
+
+    @Override
     public boolean deleteForce(String productId) {
         List<Product> all = findAll();
         Optional<Product> optional = all.stream()

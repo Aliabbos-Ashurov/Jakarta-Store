@@ -21,7 +21,7 @@
     <header>
         <h1>Welcome to Your Seller Account</h1>
         <p class="subtitle">Manage your shop and orders here.</p>
-        <form action="${pageContext.request.contextPath}/views/seller/create_shop" method="post">
+        <form action="${pageContext.request.contextPath}/views/seller/create_shop">
             <button type="submit" class="btn btn-primary">CREATE SHOP</button>
         </form>
     </header>
