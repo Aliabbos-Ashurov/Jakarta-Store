@@ -2,7 +2,6 @@ package com.pdp.jakartastore.entity.shop;
 
 import com.pdp.jakartastore.entity.BaseEntity;
 import com.pdp.jakartastore.entity.user.Users;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;

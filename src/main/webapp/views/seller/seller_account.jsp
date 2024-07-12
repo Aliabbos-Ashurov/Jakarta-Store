@@ -15,6 +15,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Account</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/seller_account.css">
+    <style>
+        .shop-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .shop-item form {
+            display: flex;
+            align-items: center;
+        }
+        .shop-item form button {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -37,13 +52,19 @@
             <div class="shops-list">
                 <% for (Shop sellerShop : sellerShops) { %>
                 <div class="shop-item">
-                    <p class="shop-name">Shop Name: <strong><%= sellerShop.getName() %>
-                    </strong></p>
-                    <p class="shop-name">Shop Address: <strong><%= sellerShop.getAddress() %>
-                    </strong></p>
+                    <div>
+                        <p class="shop-name">Shop Name: <strong><%= sellerShop.getName() %></strong></p>
+                        <p class="shop-name">Shop Address: <strong><%= sellerShop.getAddress() %></strong></p>
+                    </div>
                     <form action="${pageContext.request.contextPath}/views/seller/seller_account" method="post">
                         <input type="hidden" name="shop_id" value="<%= sellerShop.getId() %>">
+                        <input type="hidden" name="action" value="manage">
                         <button type="submit" class="btn btn-secondary">Manage Shop</button>
+                    </form>
+                    <form action="${pageContext.request.contextPath}/views/seller/seller_account" method="post">
+                        <input type="hidden" name="shop_id" value="<%= sellerShop.getId() %>">
+                        <input type="hidden" name="action" value="delete">
+                        <button type="submit" style="background-color: red;" class="btn btn-secondary">Delete Shop</button>
                     </form>
                 </div>
                 <% } %>
