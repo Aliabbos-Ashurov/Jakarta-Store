@@ -13,7 +13,7 @@ import java.util.function.Predicate;
  * @author Aliabbos Ashurov
  * @since 06/July/2024  17:11
  **/
-@WebFilter(filterName = "SecurityFilter", value = "/*")
+//@WebFilter(filterName = "SecurityFilter", value = "/*")
 public class SecurityFilter implements Filter {
     private final List<String> WHITE_LIST = List.of(
             "", "", "", "", "", "", ""
