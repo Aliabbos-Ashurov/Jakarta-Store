@@ -21,9 +21,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gift Shop</title>
     <link rel="stylesheet" href="../../resources/css/main.css">
+    <style>
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
 
+        .nav-link:hover {
+            transform: scale(1.1);
+        }
+    </style>
     <%
-        String IMAGE_NOT_FOUND_URL = "${pageContext.request.contextPath}/resources/img/image_not_found.png";
+        String IMAGE_NOT_FOUND_URL = "../../resources/img/image_not_found_png";
     %>
 </head>
 <body>
@@ -75,7 +87,7 @@
         <button class="contact-button">Contact Us</button>
     </div>
     <div class="welcome-image">
-        <img width="1400" height="350" src="../../resources/img/jy1.png" alt="LOGO">
+        <img width="1400" height="350" src="../../resources/img/jy1.png" alt="Girl with shopping bags">
     </div>
 </section>
 
@@ -88,6 +100,7 @@
             List<Product> products = productService.findAll();
             for (Product product : products) {
                 Upload image = product.getImage();
+                //                               ../../resources/img/     578ca6df-da55-4704-9b7f-26db755f96c4-iphone.png
                 String imageUrl = image != null ? image.getExtension() + image.getGeneratedName() : IMAGE_NOT_FOUND_URL;
         %>
         <div class="product" onclick="document.getElementById('form_<%= product.getId() %>').submit();">
@@ -140,18 +153,23 @@
                 help you with your purchases, returns, and any other inquiries you may have. Your satisfaction is our
                 priority.</p>
         </div>
-        <div class="social-links">
-            <h3>Follow Us</h3>
-            <ul>
-                <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-            </ul>
+        <div class="contact-us">
+            <h3>Contact Us</h3>
+            <p>123 Main Street, London, UK</p>
+            <p>+01 12345678901</p>
+            <p>support@ourshop.com</p>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2023 All rights reserved.</p>
+        <p>© 2024 All Rights Reserved by Our Shop</p>
     </div>
 </footer>
+<script>
+    document.querySelectorAll('.product').forEach(function (product) {
+        product.addEventListener('click', function () {
+            this.querySelector('form').submit();
+        });
+    });
+</script>
 </body>
 </html>
