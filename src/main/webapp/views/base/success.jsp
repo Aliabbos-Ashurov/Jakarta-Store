@@ -65,7 +65,13 @@
 <body>
 <div class="success-message">
     Successfully!
-    <a href="${pageContext.request.contextPath}/views/base/main.jsp" class="back-button">Back to Main</a>
+    <a href="${pageContext.request.contextPath}/views/base/main" onclick="refreshPage(event)" class="back-button">Back to Main</a>
 </div>
+<script>
+    function refreshPage(event) {
+        var url = "${pageContext.request.contextPath}/views/base/main.jsp"; // Replace with the URL of the page you want to refresh
+        window.location.href = url; // Redirect to the specified URL, effectively refreshing it
+    }
+</script>
 </body>
 </html>

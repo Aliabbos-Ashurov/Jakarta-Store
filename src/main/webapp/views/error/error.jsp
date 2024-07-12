@@ -6,6 +6,6 @@
     <title>Centered GIF</title>
 </head>
 <body>
-<h1>NIGGA NOT FOUND</h1>
+
 </body>
 </html>

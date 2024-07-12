@@ -38,9 +38,9 @@ public class Product extends BaseEntity {
     @Column(name = "on_discount")
     private boolean onDiscount = false;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne//(cascade = CascadeType.ALL)
     private Shop shop;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Upload image;
 }

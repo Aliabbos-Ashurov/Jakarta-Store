@@ -50,7 +50,7 @@ public class AddCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String productId = req.getParameter("product_id");
         String userId = req.getParameter("user_id");
-        String count = req.getParameter("count");
+        String count = req.getParameter("quantity");
 
         Users users = userService.findById(userId);
         Product product = productService.findById(productId);

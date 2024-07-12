@@ -9,7 +9,7 @@
 <%@ page import="com.pdp.jakartastore.entity.product.Product" %>
 <%@ page import="com.pdp.jakartastore.entity.upload.Upload" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,13 +34,10 @@
     </div>
     <div class="right-half animate__animated animate__fadeInRight">
         <div class="product-details">
-            <h1 class="animate__animated animate__bounceInDown"><%= product.getName() %>
-            </h1>
+            <h1 class="animate__animated animate__bounceInDown"><%= product.getName() %></h1>
             <p class="price animate__animated animate__fadeIn">$<%= product.getPrice() %></p>
-            <p class="description animate__animated animate__fadeIn"><%= product.getDescription() %>
-            </p>
-            <form action="${pageContext.request.contextPath}/views/base/add_to_cart" method="post"
-                  class="animate__animated animate__fadeIn">
+            <p class="description animate__animated animate__fadeIn"><%= product.getDescription() %></p>
+            <form action="${pageContext.request.contextPath}/views/base/add_to_cart" method="post" class="animate__animated animate__fadeIn">
                 <!-- Hidden form fields -->
                 <input type="hidden" name="product_id" value="<%= product.getId() %>">
                 <input type="hidden" name="user_id" value="<%= session.getAttribute("user_id") %>">
@@ -50,8 +47,7 @@
                     <button type="submit" class="animate__animated animate__fadeInUp">Add to cart</button>
                 </div>
             </form>
-            <p class="category animate__animated animate__fadeIn"><span>Category:</span> <%= product.getCategory() %>
-            </p>
+            <p class="category animate__animated animate__fadeIn"><span>Category:</span> <%= product.getCategory() %></p>
         </div>
     </div>
 </div>

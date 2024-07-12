@@ -5,24 +5,26 @@
 <%@ page import="com.pdp.jakartastore.entity.upload.Upload" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - Products</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/shop.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-color: #f8f8f8;
         }
     </style>
 </head>
 <body>
-<%-- Product Section --%>
 <section class="product-section">
     <div class="container">
-        <h2 class="section-title">Products</h2>
+        <h2 class="section-title animate__animated animate__fadeIn">Products</h2>
 
         <div class="product-grid">
             <%
@@ -33,20 +35,20 @@
                     Upload image = product.getImage();
                     String imageUrl = image != null ? image.getExtension() + image.getGeneratedName() : IMAGE_NOT_FOUND_URL;
             %>
-            <div class="product">
+            <div class="product animate__animated animate__fadeInUp">
                 <form action="${pageContext.request.contextPath}/views/base/shop" method="post">
                     <input type="hidden" name="product_id" value="<%= product.getId() %>">
-                    <div class="product-image">
-                        <img src="<%= imageUrl %>" alt="<%= product.getName() %>">
-                        <img src="">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name"><%= product.getName() %>
-                        </h3>
-                        <span class="product-price">$<%= product.getPrice() %></span>
-                    </div>
-                    <div class="product-button">
-                        <button type="submit" class="info-button">Info</button>
+                    <div class="product-container">
+                        <div class="product-image">
+                            <img src="<%= imageUrl %>" alt="<%= product.getName() %>">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name"><%= product.getName() %></h3>
+                            <span class="product-price">$<%= product.getPrice() %></span>
+                        </div>
+                        <div class="product-button">
+                            <button type="submit" class="info-button">Info</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -55,7 +57,6 @@
     </div>
 </section>
 
-<%-- Footer Section --%>
 <footer>
     <div class="footer-content">
         <div class="about-us">
@@ -81,5 +82,7 @@
         <p>© 2024 All Rights Reserved by Our Shop</p>
     </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

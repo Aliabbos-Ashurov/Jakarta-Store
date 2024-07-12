@@ -2,13 +2,29 @@ package com.pdp.jakartastore.service.user;
 
 import com.pdp.jakartastore.entity.user.Users;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Aliabbos Ashurov
  * @since 08/July/2024  09:44
  **/
 public class UserServiceImpl implements UserService {
+
+    @Override
+    public List<Users> getByFilters() {
+        List<Users> all = findAll();
+        List<Users> active = all.stream()
+                .filter(u -> u.getStatus().equals(Users.Status.ACTIVE))
+                .collect(Collectors.toList());
+        List<Users> notActive = all.stream()
+                .filter(u -> u.getStatus().equals(Users.Status.NOT_ACTIVE))
+                .collect(Collectors.toList());
+        notActive.addAll(active);
+        return notActive;
+    }
+
     @Override
     public Users findByUsername(String username) {
         return dao.findByUsername(username).orElse(null);
@@ -25,8 +41,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Users addUser(Users users) {
-        return dao.addUser(users);
+    public void addUser(Users users) {
+        dao.addUser(users);
     }
 
     @Override

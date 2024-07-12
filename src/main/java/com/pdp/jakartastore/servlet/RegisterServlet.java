@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet {
             cookie.setMaxAge(60 * 30);
             resp.addCookie(cookie);
 
-            resp.sendRedirect(req.getContextPath() + "/views/base/main.jsp");
+            resp.sendRedirect(req.getContextPath() + "/views/base/main");
         } catch (EntityExistsException e) {
             req.setAttribute("errorMessage", e.getMessage());
             req.getRequestDispatcher("/views/base/register.jsp").forward(req, resp);

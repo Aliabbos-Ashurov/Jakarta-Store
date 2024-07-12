@@ -22,12 +22,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String userId = (String) session.getAttribute("user_id");
-        if (userId != null) {
-            resp.sendRedirect(req.getContextPath() + "/views/base/main.jsp");
-        }
-        resp.sendRedirect("req.getContextPath()" + "/views/base/index.jsp");
+        req.getRequestDispatcher("/views/base/main.jsp").forward(req, resp);
     }
 
     @Override

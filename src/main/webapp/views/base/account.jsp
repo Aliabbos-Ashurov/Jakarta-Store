@@ -67,7 +67,7 @@
                 <% for (Orders orders : ordersByCartId) {
                     Product product = productService.findById(orders.getProduct().getId());
                     Upload image = product.getImage();
-                    String imageURL = (image != null) ? (image.getExtension() + image.getFileName() + "." + image.getFileType()) : IMAGE_NOT_FOUND_URL;
+                    String imageURL = (image != null) ? (image.getExtension() + image.getGeneratedName()) : IMAGE_NOT_FOUND_URL;
                 %>
                 <div class="order-product">
                     <img src="<%= imageURL %>" alt="<%= product.getName() %>">

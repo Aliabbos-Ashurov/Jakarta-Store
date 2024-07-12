@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f5f5f5;
 }
 
 header {
@@ -47,50 +48,124 @@ header nav ul li a:hover::before {
     width: 100%;
 }
 
-.welcome-section {
+.split-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.left-half, .right-half {
+    flex: 1;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.left-half {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    background-color: #7b2cc3;
-    padding: 50px 0;
-    animation: fadeIn 2s ease-in-out;
+    justify-content: center;
 }
 
-.welcome-content {
-    max-width: 600px;
-    animation: slideInLeft 1s ease-in-out;
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
 }
 
-.welcome-content h1 {
-    font-size: 48px;
-    color: #fff;
+.right-half {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.product-details h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.product-details .price {
+    font-size: 1.5em;
+    color: #9534eb;
     margin-bottom: 20px;
 }
 
-.welcome-content p {
-    color: #fff;
-    font-size: 16px;
+.product-details .description {
+    font-size: 1em;
+    color: #666;
     margin-bottom: 20px;
 }
 
-.contact-button {
-    background-color: #ff4d4d;
-    color: #fff;
+.add-to-cart {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-to-cart input {
+    width: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-to-cart button {
     padding: 10px 20px;
     border: none;
+    border-radius: 5px;
+    background-color: #9534eb;
+    color: #fff;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.contact-button:hover {
-    background-color: #e03e3e;
-    transform: scale(1.05);
+.add-to-cart button:hover {
+    background-color: #7b2cc3;
 }
 
-.welcome-image img {
-    max-width: 400px;
-    animation: slideInRight 1s ease-in-out;
+.product-details .category {
+    font-size: 0.9em;
+    color: #999;
+    text-align: center;
+}
+
+.product-details .category span {
+    color: #9534eb;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    animation: slideUp 0.5s ease-in-out;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-content div {
+    max-width: 300px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
 }
 
 @keyframes fadeIn {
@@ -99,24 +174,6 @@ header nav ul li a:hover::before {
     }
     to {
         opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
     }
 }
 
@@ -129,182 +186,11 @@ header nav ul li a:hover::before {
     }
 }
 
-.latest-products {
-    text-align: center;
-    padding: 50px 0;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.latest-products h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: slideInUp 1s ease-in-out;
-}
-
-.product {
-    border: 1px solid #ddd;
-    padding: 25px;
-    margin: 15px;
-    text-align: center;
-    width: 300px;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.product:hover {
-    transform: scale(1.05);
-}
-
-.product span {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #ff4d4d;
-    color: #fff;
-    padding: 2px 5px;
-    font-size: 12px;
-}
-
-.product img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-}
-
-.product .price {
-    color: #ff4d4d;
-    font-weight: bold;
-}
-
-.contact-section {
-    padding: 50px 0;
-    background-color: #f9f9f9;
-}
-
-.contact-section h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 32px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.contact-content {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    animation: slideInUp 1s ease-in-out;
-}
-
-.map iframe {
-    border: none;
-}
-
-.contact-form {
-    max-width: 400px;
-}
-
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.contact-form input, .contact-form textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    width: 100%;
-}
-
-.contact-form button {
-    padding: 10px;
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-form button:hover {
-    background-color: #e03e3e;
-    transform: scale(1.05);
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 50px 0;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    gap: 50px;
-}
-
-.footer-content div {
-    max-width: 250px;
-}
-
-.footer-content h3 {
-    margin-bottom: 15px;
-    color: #7b2cc3;
-    animation: slideInUp 1s ease-in-out;
-}
-
-.footer-content p, .footer-content form {
-    margin-bottom: 15px;
-}
-
-.footer-content input {
-    padding: 10px;
-    width: 100%;
-    border: none;
-    margin-bottom: 10px;
-}
-
-.footer-content button {
-    padding: 10px;
-    background-color: #ff4d4d;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-content button:hover {
-    background-color: #e03e3e;
-    transform: scale(1.05);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #222;
-    color: #7b2cc3;
-    animation: slideInUp 1s ease-in-out;
-}
-
-@keyframes slideInUp {
+@keyframes slideUp {
     from {
         transform: translateY(100%);
     }
     to {
         transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }

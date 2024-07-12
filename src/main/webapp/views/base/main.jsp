@@ -33,6 +33,17 @@
         .nav-link:hover {
             transform: scale(1.1);
         }
+
+        .product form {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            cursor: pointer;
+        }
     </style>
     <%
         String IMAGE_NOT_FOUND_URL = "../../resources/img/image_not_found_png";
@@ -51,17 +62,22 @@
                     UserService userService = new UserServiceImpl();
                     Users user = userService.findById(id);
                     if (user != null) {
-                        if (user.getRole() == Users.Role.SELLER) {
+                        if (user.getRole() == Users.Role.ADMIN) {
             %>
-            <li><a href="${pageContext.request.contextPath}/views/seller/seller_account.jsp" class="nav-link">SELLER
+            <li><a href="${pageContext.request.contextPath}/views/admin/admin_account" class="nav-link">ADMIN&nbsp;ACCOUNT</a>
+            </li>
+            <li><a href="logout.jsp" class="nav-link">LOGOUT</a></li>
+            <% } else if (user.getRole() == Users.Role.SELLER) { %>
+            <li><a href="${pageContext.request.contextPath}/views/seller/seller_account" class="nav-link">SELLER
                 ACCOUNT</a></li>
-            <% } else { %>
-            <li><a href="account.jsp" class="nav-link">ACCOUNT</a></li>
-            <li><a href="${pageContext.request.contextPath}/views/seller/seller_register.jsp" class="nav-link">REGISTER
-                AS A SELLER</a></li>
-            <% } %>
             <li><a href="logout.jsp" class="nav-link">LOGOUT</a></li>
             <% } else { %>
+            <li><a href="account.jsp" class="nav-link">ACCOUNT</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/seller/seller_register" class="nav-link">REGISTER
+                AS A SELLER</a></li>
+            <li><a href="logout.jsp" class="nav-link">LOGOUT</a></li>
+            <% }
+            } else { %>
             <li><a href="login.jsp" class="nav-link">LOGIN</a></li>
             <li><a href="register.jsp" class="nav-link">SIGN UP</a></li>
             <% }
@@ -76,13 +92,13 @@
 <!--Welcome_Section -->
 <section class="welcome-section">
     <div class="welcome-content">
-        <h1>Welcome To Our Shop</h1>
+        <h1>Welcome To Our GAMING SHOP</h1>
         <p>Discover a world of unique products and exceptional service. We strive to provide you with the best shopping
             experience, ensuring every purchase meets your expectations.</p>
         <button class="contact-button">Contact Us</button>
     </div>
     <div class="welcome-image">
-        <img width="550" height="440" src="../../resources/img/main_logo.png" alt="Girl with shopping bags">
+        <img width="1400" height="350" src="../../resources/img/jy1.png" alt="Girl with shopping bags">
     </div>
 </section>
 
@@ -95,10 +111,12 @@
             List<Product> products = productService.findAll();
             for (Product product : products) {
                 Upload image = product.getImage();
-                //                                     ../../resources/img/578ca6df-da55-4704-9b7f-26db755f96c4-iphone.png
                 String imageUrl = image != null ? image.getExtension() + image.getGeneratedName() : IMAGE_NOT_FOUND_URL;
         %>
-        <div class="product">
+        <div class="product" onclick="document.getElementById('form_<%= product.getId() %>').submit();">
+            <form id="form_<%= product.getId() %>" action="shop" method="post">
+                <input type="hidden" name="product_id" value="<%= product.getId() %>">
+            </form>
             <span>New</span>
             <img src="<%= imageUrl %>" alt="<%= product.getName() %>">
             <p><%= product.getName() %>
@@ -116,7 +134,7 @@
     <div class="contact-content">
         <div class="map">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9999481930735!2d2.292292315674767!3d48.85884407928744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f9e1f7a9f1b%3A0x40b82c3688b86118!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1618333386634!5m2!1sen!2sfr"
-                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
         <div class="contact-form">
             <form action="#" method="post">
@@ -156,5 +174,12 @@
         <p>© 2024 All Rights Reserved by Our Shop</p>
     </div>
 </footer>
+<script>
+    document.querySelectorAll('.product').forEach(function (product) {
+        product.addEventListener('click', function () {
+            this.querySelector('form').submit();
+        });
+    });
+</script>
 </body>
 </html>

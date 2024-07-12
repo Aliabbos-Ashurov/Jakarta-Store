@@ -1,29 +1,27 @@
-body, html {
+body {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevent scroll bars from appearing on the body */
     background: linear-gradient(45deg, #9534eb, #7b2cc3, #9534eb, #7b2cc3); /* Gradient colors */
     background-size: 400% 400%; /* Larger size for smooth animation */
     animation: backgroundAnimation 15s infinite; /* Adjust timing and effect as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .container {
-    max-width: 600px; /* Adjusted max-width for better responsiveness */
-    margin: 20px; /* Added margin to separate container from edges */
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     border-radius: 10px;
     z-index: 1; /* Ensure content appears above background */
-    position: relative; /* Ensure content is positioned relative to the body */
     animation: fadeIn 1s ease-out; /* Fade-in animation for content */
-    overflow-y: auto; /* Enable vertical scroll */
-    height: calc(100% - 40px); /* Adjust height to fit within viewport */
 }
 
 header {
@@ -37,42 +35,49 @@ header h1 {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%; /* Full width */
 }
 
 form {
     width: 100%;
-    max-width: 400px; /* Adjusted form width for better layout */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Space below the form */
+}
+
+.product-list {
+    width: 100%; /* Full width of the container */
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust spacing between products */
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-    margin-bottom: 20px;
+.product-item img {
+    max-width: 100px; /* Adjust image size */
+    height: auto;
+    margin-right: 20px; /* Adjust spacing */
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
+.product-details {
+    flex-grow: 1;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+.product-details h3 {
+    margin: 0; /* Remove default margin */
+    color: #9534eb; /* Adjust text color */
 }
 
-input[type="file"] {
-    margin-top: 5px;
+.product-details p {
+    margin: 5px 0; /* Adjust margin */
 }
 
 .btn {
@@ -83,6 +88,7 @@ input[type="file"] {
     border-radius: 5px;
     transition: background-color 0.3s ease;
     cursor: pointer;
+    border: none; /* Remove default button border */
 }
 
 .btn:hover {
