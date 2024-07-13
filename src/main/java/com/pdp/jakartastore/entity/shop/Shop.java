@@ -3,11 +3,10 @@ package com.pdp.jakartastore.entity.shop;
 import com.pdp.jakartastore.entity.BaseEntity;
 import com.pdp.jakartastore.entity.user.Users;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -28,4 +27,13 @@ public class Shop extends BaseEntity {
 
     @OneToOne//(cascade = CascadeType.ALL)
     private Users owner;
+
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private Status status = Status.ACTIVE;
+
+
+    public enum Status {
+        NOT_ACTIVE, ACTIVE, DELETED
+    }
 }

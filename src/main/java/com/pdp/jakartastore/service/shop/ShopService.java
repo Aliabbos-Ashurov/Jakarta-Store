@@ -15,4 +15,6 @@ public interface ShopService extends BaseService<Shop, String> {
     ShopDAO dao = new ShopDAO();
 
     List<Shop> getSellerShops(@NotBlank String sellerId);
+
+    List<Shop> getByFilter();
 }

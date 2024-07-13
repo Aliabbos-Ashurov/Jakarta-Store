@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: mac
+  Date: 13/07/24
+  Time: 14:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +26,7 @@
         }
 
         .success-message {
-            background-color: #9534eb;
+            background-color: #dc011d;
             color: white;
             padding: 20px;
             border-radius: 10px;
@@ -49,28 +57,29 @@
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #ffffff;
-            color: #9534eb;
-            border: 2px solid #9534eb;
+            color: #dc011d;
+            border: 2px solid #dc011d;
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .back-button:hover {
-            background-color: #9534eb;
+            background-color: #dc011d;
             color: #ffffff;
         }
     </style>
 </head>
 <body>
 <div class="success-message">
-    Successfully!
-    <a href="${pageContext.request.contextPath}/views/base/main" onclick="refreshPage(event)" class="back-button">Back to Main</a>
+    Unsuccessful! Your shop was closed by the ADMIN
+    <a href="${pageContext.request.contextPath}/views/base/main" onclick="refreshPage(event)" class="back-button">Back
+        to Main</a>
 </div>
 <script>
     function refreshPage(event) {
-        var url = "${pageContext.request.contextPath}/views/base/main"; // Replace with the URL of the page you want to refresh
-        window.location.href = url; // Redirect to the specified URL, effectively refreshing it
+        var url = "${pageContext.request.contextPath}/views/seller/seller_account";
+        window.location.href = url;
     }
 </script>
 </body>

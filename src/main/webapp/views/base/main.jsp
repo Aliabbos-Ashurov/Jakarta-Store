@@ -14,13 +14,323 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift Shop</title>
-    <link rel="stylesheet" href="../../resources/css/main.css">
+    <title>GAMING Shop</title>
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           margin: 0;
+           padding: 0;
+       }
+
+       header {
+           background-color: #fff;
+           padding: 10px 0;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+           animation: slideDown 0.5s ease-in-out;
+       }
+
+       header nav ul {
+           list-style: none;
+           margin: 0;
+           padding: 0;
+           display: flex;
+           justify-content: center;
+       }
+
+       header nav ul li {
+           margin: 0 15px;
+       }
+
+       header nav ul li a {
+           text-decoration: none;
+           color: #000;
+           font-weight: bold;
+           position: relative;
+       }
+
+       header nav ul li a::before {
+           content: "";
+           position: absolute;
+           width: 0;
+           height: 2px;
+           bottom: 0;
+           left: 0;
+           background-color: #7b2cc3;
+           visibility: hidden;
+           transition: all 0.3s ease-in-out;
+       }
+
+       header nav ul li a:hover::before {
+           visibility: visible;
+           width: 100%;
+       }
+
+       .welcome-section {
+           display: flex;
+           align-items: center;
+           justify-content: space-around;
+           background-color: #7b2cc3;
+           padding: 50px 0;
+           animation: fadeIn 2s ease-in-out;
+       }
+
+       .welcome-content {
+           max-width: 600px;
+           animation: slideInLeft 1s ease-in-out;
+       }
+
+       .welcome-content h1 {
+           font-size: 48px;
+           color: #fff;
+           margin-bottom: 20px;
+       }
+
+       .welcome-content p {
+           color: #fff;
+           font-size: 16px;
+           margin-bottom: 20px;
+       }
+
+       .contact-button {
+           background-color: #ff4d4d;
+           color: #fff;
+           padding: 10px 20px;
+           border: none;
+           cursor: pointer;
+           font-size: 16px;
+           transition: background-color 0.3s ease, transform 0.3s ease;
+       }
+
+       .contact-button:hover {
+           background-color: #e03e3e;
+           transform: scale(1.05);
+       }
+
+       .welcome-image img {
+           max-width: 400px;
+           animation: slideInRight 1s ease-in-out;
+       }
+
+       @keyframes fadeIn {
+           from {
+               opacity: 0;
+           }
+           to {
+               opacity: 1;
+           }
+       }
+
+       @keyframes slideInLeft {
+           from {
+               transform: translateX(-100%);
+           }
+           to {
+               transform: translateX(0);
+           }
+       }
+
+       @keyframes slideInRight {
+           from {
+               transform: translateX(100%);
+           }
+           to {
+               transform: translateX(0);
+           }
+       }
+
+       @keyframes slideDown {
+           from {
+               transform: translateY(-100%);
+           }
+           to {
+               transform: translateY(0);
+           }
+       }
+
+       .latest-products {
+           text-align: center;
+           padding: 50px 0;
+           animation: fadeIn 2s ease-in-out;
+       }
+
+       .latest-products h2 {
+           font-size: 32px;
+           margin-bottom: 20px;
+       }
+
+       .product-grid {
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: center;
+           animation: slideInUp 1s ease-in-out;
+       }
+
+       .product {
+           border: 1px solid #ddd;
+           padding: 25px;
+           margin: 15px;
+           text-align: center;
+           width: 300px;
+           position: relative;
+           transition: transform 0.3s ease;
+       }
+
+       .product:hover {
+           transform: scale(1.05);
+       }
+
+       .product span {
+           position: absolute;
+           top: 10px;
+           left: 10px;
+           background-color: #ff4d4d;
+           color: #fff;
+           padding: 2px 5px;
+           font-size: 12px;
+       }
+
+       .product img {
+           width: 200px;
+           height: 200px;
+           object-fit: cover;
+       }
+
+       .product .price {
+           color: #ff4d4d;
+           font-weight: bold;
+       }
+
+       .contact-section {
+           padding: 30px 0;
+           background-color: #f9f9f9;
+       }
+
+       .contact-section h2 {
+           text-align: center;
+           margin-bottom: 10px;
+           font-size: 20px;
+           animation: fadeIn 2s ease-in-out;
+       }
+
+       .contact-content {
+           display: flex;
+           justify-content: center;
+           gap: 50px;
+           animation: slideInUp 1s ease-in-out;
+       }
+
+       .map iframe {
+           border: none;
+       }
+
+       .contact-form {
+           max-width: 400px;
+       }
+
+       .contact-form form {
+           display: flex;
+           flex-direction: column;
+           gap: 30px;
+       }
+
+       .contact-form input, .contact-form textarea {
+           padding: 30px;
+           border: 1px solid #ddd;
+           width: 100%;
+       }
+
+       .contact-form button {
+           padding: 20px;
+           background-color: #ff4d4d;
+           color: #fff;
+           border: none;
+           cursor: pointer;
+           transition: background-color 0.3s ease, transform 0.3s ease;
+       }
+
+       .contact-form button:hover {
+           background-color: #e03e3e;
+           transform: scale(1.05);
+       }
+
+       footer {
+           background-color: #333;
+           color: #fff;
+           padding: 50px 0;
+           animation: fadeIn 2s ease-in-out;
+       }
+
+       .footer-content {
+           display: flex;
+           justify-content: space-around;
+           gap: 50px;
+       }
+
+       .footer-content div {
+           max-width: 250px;
+       }
+
+       .footer-content h3 {
+           margin-bottom: 15px;
+           color: #7b2cc3;
+           animation: slideInUp 1s ease-in-out;
+       }
+
+       .footer-content p, .footer-content form {
+           margin-bottom: 15px;
+       }
+
+       .footer-content input {
+           padding: 10px;
+           width: 100%;
+           border: none;
+           margin-bottom: 10px;
+       }
+
+       .footer-content button {
+           padding: 10px;
+           background-color: #ff4d4d;
+           color: #fff;
+           border: none;
+           cursor: pointer;
+           transition: background-color 0.3s ease, transform 0.3s ease;
+       }
+
+       .footer-content button:hover {
+           background-color: #e03e3e;
+           transform: scale(1.05);
+       }
+
+       .footer-bottom {
+           text-align: center;
+           padding: 15px 0;
+           background-color: #222;
+           color: #7b2cc3;
+           animation: slideInUp 1s ease-in-out;
+       }
+
+       @keyframes slideInUp {
+           from {
+               transform: translateY(100%);
+           }
+           to {
+               transform: translateY(0);
+           }
+       }
+
+       @keyframes fadeIn {
+           from {
+               opacity: 0;
+           }
+           to {
+               opacity: 1;
+           }
+       }
+   </style>
     <style>
         .nav-link {
             text-decoration: none;
@@ -43,8 +353,8 @@
 <header>
     <nav>
         <ul>
-            <li><a href="main.jsp" class="nav-link">HOME</a></li>
-            <li><a href="shop.jsp" class="nav-link">SHOP</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/main" class="nav-link">HOME</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/shop" class="nav-link">SHOP</a></li>
             <%
                 String id = (String) session.getAttribute("user_id");
                 if (id != null) {
@@ -55,24 +365,24 @@
             %>
             <li><a href="${pageContext.request.contextPath}/views/admin/admin_account" class="nav-link">ADMIN&nbsp;ACCOUNT</a>
             </li>
-            <li><a href="logout.jsp" class="nav-link">LOGOUT</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/logout" class="nav-link">LOGOUT</a></li>
             <% } else if (user.getRole() == Users.Role.SELLER) { %>
             <li><a href="${pageContext.request.contextPath}/views/seller/seller_account" class="nav-link">SELLER
                 ACCOUNT</a></li>
-            <li><a href="logout.jsp" class="nav-link">LOGOUT</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/logout" class="nav-link">LOGOUT</a></li>
             <% } else { %>
-            <li><a href="account.jsp" class="nav-link">ACCOUNT</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/account" class="nav-link">ACCOUNT</a></li>
             <li><a href="${pageContext.request.contextPath}/views/seller/seller_register" class="nav-link">REGISTER
                 AS A SELLER</a></li>
-            <li><a href="logout.jsp" class="nav-link">LOGOUT</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/logout" class="nav-link">LOGOUT</a></li>
             <% }
             } else { %>
-            <li><a href="login.jsp" class="nav-link">LOGIN</a></li>
-            <li><a href="register.jsp" class="nav-link">SIGN UP</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/login" class="nav-link">LOGIN</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/register" class="nav-link">SIGN UP</a></li>
             <% }
             } else { %>
-            <li><a href="login.jsp" class="nav-link">LOGIN</a></li>
-            <li><a href="register.jsp" class="nav-link">SIGN UP</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/login" class="nav-link">LOGIN</a></li>
+            <li><a href="${pageContext.request.contextPath}/views/base/register" class="nav-link">SIGN UP</a></li>
             <% } %>
         </ul>
     </nav>
@@ -87,7 +397,7 @@
         <button class="contact-button">Contact Us</button>
     </div>
     <div class="welcome-image">
-        <img width="1400" height="350" src="../../resources/img/jy1.png" alt="Girl with shopping bags">
+        <img width="1400" height="350" src="../../resources/img/jy1.png" alt="JOY STICK">
     </div>
 </section>
 

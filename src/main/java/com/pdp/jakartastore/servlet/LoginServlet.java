@@ -34,15 +34,20 @@ public class LoginServlet extends HttpServlet {
         try {
             Users curUser = userService.check(username, password);
             if (curUser != null) {
-                HttpSession session = req.getSession();
-                session.setAttribute("user_id", curUser.getId());
+                if (curUser.getStatus().equals(Users.Status.ACTIVE)) {
+                    HttpSession session = req.getSession();
+                    session.setAttribute("user_id", curUser.getId());
 
-                Cookie cookie = new Cookie("JSESSIONID", session.getId());
-                cookie.setPath("/");
-                cookie.setMaxAge(60 * 30);
-                resp.addCookie(cookie);
+                    Cookie cookie = new Cookie("JSESSIONID", session.getId());
+                    cookie.setPath("/");
+                    cookie.setMaxAge(60 * 30);
+                    resp.addCookie(cookie);
 
-                resp.sendRedirect(req.getContextPath() + "/views/base/main.jsp");
+                    resp.sendRedirect(req.getContextPath() + "/views/base/main.jsp");
+                } else {
+                    req.setAttribute("errorMessage", "You are blocked on the admin side!");
+                    req.getRequestDispatcher("/views/base/login.jsp").forward(req, resp);
+                }
             } else {
                 req.setAttribute("errorMessage", "Invalid username or password.");
                 req.getRequestDispatcher("/views/base/login.jsp").forward(req, resp);

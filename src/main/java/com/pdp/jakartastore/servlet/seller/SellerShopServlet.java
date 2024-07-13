@@ -57,6 +57,9 @@ public class SellerShopServlet extends HttpServlet {
         if (shop == null) {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Shop not found");
             return;
+        } else if (shop.getStatus().equals(Shop.Status.NOT_ACTIVE)) {
+            resp.sendRedirect(req.getContextPath() + "/views/seller/unsuccessful.jsp");
+            return;
         }
 
         String fileName = imageFilePart.getSubmittedFileName();

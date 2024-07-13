@@ -2,6 +2,7 @@ package com.pdp.jakartastore.service.shop;
 
 import com.pdp.jakartastore.entity.shop.Shop;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,6 +11,19 @@ import java.util.stream.Collectors;
  * @since 10/July/2024  10:19
  **/
 public class ShopServiceImpl implements ShopService {
+
+    @Override
+    public List<Shop> getByFilter() {
+        List<Shop> shops = findAll();
+        List<Shop> active = shops.stream()
+                .filter(shop -> shop.getStatus().equals(Shop.Status.ACTIVE))
+                .collect(Collectors.toList());
+        List<Shop> notActive = shops.stream()
+                .filter(shop -> shop.getStatus().equals(Shop.Status.NOT_ACTIVE))
+                .collect(Collectors.toList());
+        notActive.addAll(active);
+        return notActive;
+    }
 
     @Override
     public List<Shop> getSellerShops(String sellerId) {
