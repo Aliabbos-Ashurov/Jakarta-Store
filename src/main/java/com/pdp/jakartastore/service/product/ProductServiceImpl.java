@@ -21,6 +21,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getProductsByPriceRange(int low, int max) {
+        return dao.getProductsByPriceRange(low, max);
+    }
+
+    @Override
+    public List<Product> getProductsByPriceRangeAndCategory(int low, int max, String category) {
+        return dao.getProductsByPriceRangeAndCategory(low, max, category);
+    }
+
+    @Override
+    public List<String> getCategories() {
+        return dao.getCategories();
+    }
+
+    @Override
     public boolean deleteForce(String productId) {
         List<Product> all = findAll();
         Optional<Product> optional = all.stream()

@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Aliabbos Ashurov
@@ -21,7 +22,22 @@ public class ShopServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/views/base/shop.jsp").forward(req, resp);
+        String lowPriceParam = req.getParameter("low-price");
+        String maxPriceParam = req.getParameter("max-price");
+        String categoryParam = req.getParameter("category");
+
+        int lowPrice = lowPriceParam != null && !lowPriceParam.isEmpty() ? Integer.parseInt(lowPriceParam) : 0;
+        int maxPrice = maxPriceParam != null && !maxPriceParam.isEmpty() ? Integer.parseInt(maxPriceParam) : Integer.MAX_VALUE;
+
+        List<Product> filteredProducts;
+        ProductService productService = new ProductServiceImpl();
+        if (categoryParam == null || "ALL".equals(categoryParam)) {
+            filteredProducts = productService.getProductsByPriceRange(lowPrice, maxPrice);
+        } else {
+            filteredProducts = productService.getProductsByPriceRangeAndCategory(lowPrice, maxPrice, categoryParam);
+        }
+        req.setAttribute("products", filteredProducts);
+        req.getRequestDispatcher("/views/products.jsp").forward(req, resp);
     }
 
     @Override

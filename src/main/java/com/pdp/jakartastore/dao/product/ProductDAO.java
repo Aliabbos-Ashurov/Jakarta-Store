@@ -16,4 +16,34 @@ public class ProductDAO extends BaseDAO<Product, String> {
         commit();
         return resultList;
     }
+
+    @SuppressWarnings("unchecked")
+    public List<String> getCategories() {
+        begin();
+        List<String> resultList = entityManager.createNativeQuery("SELECT DISTINCT p.category FROM product p", String.class).getResultList();
+        commit();
+        return resultList;
+    }
+
+    public List<Product> getProductsByPriceRange(int low, int max) {
+        begin();
+        List<Product> resultList = entityManager.createQuery("SELECT p FROM Product p WHERE p.price BETWEEN :low AND :max", Product.class)
+                .setParameter("low", low)
+                .setParameter("max", max)
+                .getResultList();
+        commit();
+        return resultList;
+    }
+
+    public List<Product> getProductsByPriceRangeAndCategory(int low, int max, String category) {
+        begin();
+        List<Product> resultList = entityManager.createQuery(
+                        "SELECT p FROM Product p WHERE p.price BETWEEN :low AND :max AND p.category = :category", Product.class)
+                .setParameter("low", low)
+                .setParameter("max", max)
+                .setParameter("category", category)
+                .getResultList();
+        commit();
+        return resultList;
+    }
 }

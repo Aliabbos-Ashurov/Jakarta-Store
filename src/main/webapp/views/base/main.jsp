@@ -344,14 +344,14 @@
             transform: scale(1.1);
         }
     </style>
-    <%
-        String IMAGE_NOT_FOUND_URL = "../../resources/img/image_not_found_png";
-    %>
 </head>
 <body>
 <!-- Header -->
 <header>
     <nav>
+        <%
+            String IMAGE_NOT_FOUND_URL = "../../resources/img/image_not_found_png";
+        %>
         <ul>
             <li><a href="${pageContext.request.contextPath}/views/base/main" class="nav-link">HOME</a></li>
             <li><a href="${pageContext.request.contextPath}/views/base/shop" class="nav-link">SHOP</a></li>
