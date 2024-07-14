@@ -66,7 +66,7 @@ public class AddCartServlet extends HttpServlet {
 
             resp.sendRedirect(req.getContextPath() + "/views/base/success.jsp");
         } else {
-            resp.sendRedirect(req.getContextPath() + "/views/base/index.jsp");
+            resp.sendRedirect(req.getContextPath() + "/views/base/login.jsp");
         }
     }
 }

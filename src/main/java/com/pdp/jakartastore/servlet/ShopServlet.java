@@ -29,15 +29,19 @@ public class ShopServlet extends HttpServlet {
         int lowPrice = lowPriceParam != null && !lowPriceParam.isEmpty() ? Integer.parseInt(lowPriceParam) : 0;
         int maxPrice = maxPriceParam != null && !maxPriceParam.isEmpty() ? Integer.parseInt(maxPriceParam) : Integer.MAX_VALUE;
 
+        System.out.println("Low Price: " + lowPrice);
+        System.out.println("Max Price: " + maxPrice);
+        System.out.println("Category: " + categoryParam);
+
         List<Product> filteredProducts;
-        ProductService productService = new ProductServiceImpl();
         if (categoryParam == null || "ALL".equals(categoryParam)) {
             filteredProducts = productService.getProductsByPriceRange(lowPrice, maxPrice);
         } else {
             filteredProducts = productService.getProductsByPriceRangeAndCategory(lowPrice, maxPrice, categoryParam);
         }
+        System.out.println(filteredProducts);
         req.setAttribute("products", filteredProducts);
-        req.getRequestDispatcher("/views/products.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/base/shop.jsp").forward(req, resp);
     }
 
     @Override

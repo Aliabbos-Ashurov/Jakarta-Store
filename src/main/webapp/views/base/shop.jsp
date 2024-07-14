@@ -40,7 +40,7 @@
         }
 
         .category-filter {
-            width: 20%;
+            width: 15%;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -245,7 +245,7 @@
         <form action="${pageContext.request.contextPath}/views/base/shop" method="get">
             <ul>
                 <li>
-                    <input type="radio" id="all" name="category" value="ALL" checked>
+                    <input type="radio" id="all" name="category" value="ALL">
                     <label for="all">ALL</label>
                 </li>
                 <%
@@ -268,7 +268,8 @@
         <h2 class="section-title animate__animated animate__fadeIn">Products</h2>
         <div class="product-grid">
             <%
-                List<Product> products = productService.findAll();
+                @SuppressWarnings("unchecked")
+                List<Product> products = (List<Product>) request.getAttribute("products");
                 for (Product product : products) {
                     Upload image = product.getImage();
                     String imageUrl = image != null ? image.getExtension() + image.getGeneratedName() : IMAGE_NOT_FOUND_URL;

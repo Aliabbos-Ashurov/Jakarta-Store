@@ -81,6 +81,7 @@
         <input type="password" id="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
     </form>
+        <p>If you don't have account here: <p> <a href="register">REGISTER</a>
 </div>
 </body>
 </html>
