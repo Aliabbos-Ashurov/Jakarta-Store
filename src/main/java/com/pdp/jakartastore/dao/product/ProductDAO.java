@@ -37,9 +37,10 @@ public class ProductDAO extends BaseDAO<Product, String> {
 
     public List<Product> getProductsByPriceRangeAndCategory(int low, int max, String category) {
         begin();
+
         List<Product> resultList = entityManager.createQuery(
-                        "SELECT p FROM Product p WHERE p.price BETWEEN :low AND :max AND p.category = :category", Product.class)
-                .setParameter("low", low)
+                        "SELECT p FROM Product p WHERE p.price  BETWEEN :low AND :max AND p.category = :category", Product.class)
+                .setParameter("low", low)  // TODO: 01.08.2024    nigga definition will be here
                 .setParameter("max", max)
                 .setParameter("category", category)
                 .getResultList();

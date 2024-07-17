@@ -29,8 +29,8 @@ public class SellerRegisterServlet extends HttpServlet {
         String phone_number = req.getParameter("phone_number");
         String userId = (String) req.getSession().getAttribute("user_id");
         Users user = userService.findById(userId);
-        user.setPhoneNumber(phone_number);
         user.setRole(Users.Role.SELLER);
+        user.setPhoneNumber(phone_number);
         userService.update(user);
         resp.sendRedirect(req.getContextPath() + "/views/base/success.jsp");
     }

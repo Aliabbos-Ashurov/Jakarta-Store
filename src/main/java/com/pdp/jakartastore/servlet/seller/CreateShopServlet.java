@@ -39,6 +39,7 @@ public class CreateShopServlet extends HttpServlet {
                 .name(name)
                 .address(address)
                 .owner(user)
+                .status(Shop.Status.WAITING)
                 .phone(Objects.requireNonNullElse(user.getPhoneNumber(), "UNKNOWN PHONE NUMBER"))
                 .build();
         shopService.save(shop);

@@ -119,11 +119,52 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="title animate__animated animate__fadeIn">Shop Management</h1>
     <div class="user-table animate__animated animate__fadeInUp">
         <%
             ShopService shopService = new ShopServiceImpl();
-            List<Shop> shops = shopService.getByFilter();
+            List<Shop> shopss = shopService.getWaitingShops();
+            int rowNumber = 1;
+        %>
+
+        <% if (!shopss.isEmpty()) { %>
+        <h1 class="title animate__animated animate__fadeIn">Waiting shops</h1>
+        <table>
+            <tr>
+                <th>N</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Owner</th>
+                <th>Action</th>
+            </tr>
+            <% for (Shop shop : shopss) { %>
+            <tr>
+                <td><%= rowNumber++ %></td>
+                <td><%= shop.getName() %></td>
+                <td><%= shop.getAddress() %></td>
+                <td><%= shop.getPhone() %></td>
+                <td><%= shop.getOwner().getFullname() %></td>
+                <td>
+                    <form action="${pageContext.request.contextPath}/views/admin/admin_account" method="post" class="inline-form">
+                        <input type="hidden" name="shop_id" value="<%= shop.getId() %>">
+                        <input type="hidden" name="action" value="accept_shop">
+                        <button type="submit" class="btn btn-success">ACCEPT</button>
+                    </form>
+                    <form action="${pageContext.request.contextPath}/views/admin/admin_account" method="post" class="inline-form">
+                        <input type="hidden" name="shop_id" value="<%= shop.getId() %>">
+                        <input type="hidden" name="action" value="cancel_shop">
+                        <button type="submit" class="btn btn-danger">CANCEL</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+        <% } %>
+    </div>
+    <h1 class="title animate__animated animate__fadeIn">Shop Management</h1>
+    <div class="user-table animate__animated animate__fadeInUp">
+        <%
+            List<Shop> shops = shopService.getShops();
             int row = 1;
         %>
         <table>
@@ -138,11 +179,16 @@
             <% for (Shop shop : shops) {
                 if (!shop.getStatus().equals(Shop.Status.DELETED)) { %>
             <tr>
-                <td><%= row++ %></td>
-                <td><%= shop.getName() %></td>
-                <td><%= shop.getAddress() %></td>
-                <td><%= shop.getPhone() %></td>
-                <td><%= shop.getOwner().getFullname() %></td>
+                <td><%= row++ %>
+                </td>
+                <td><%= shop.getName() %>
+                </td>
+                <td><%= shop.getAddress() %>
+                </td>
+                <td><%= shop.getPhone() %>
+                </td>
+                <td><%= shop.getOwner().getFullname() %>
+                </td>
                 <td>
                     <% if (shop.getStatus().equals(Shop.Status.ACTIVE)) { %>
                     <form action="${pageContext.request.contextPath}/views/admin/admin_account" method="post"
@@ -151,7 +197,7 @@
                         <input type="hidden" name="action" value="deactive_shop">
                         <button type="submit" class="btn btn-danger">Deactivate</button>
                     </form>
-                    <% } else if (shop.getStatus().equals(Shop.Status.NOT_ACTIVE)){ %>
+                    <% } else if (shop.getStatus().equals(Shop.Status.NOT_ACTIVE)) { %>
                     <form action="${pageContext.request.contextPath}/views/admin/admin_account" method="post"
                           class="inline-form">
                         <input type="hidden" name="shop_id" value="<%= shop.getId() %>">
@@ -182,9 +228,12 @@
             <% for (Users user : users) {
                 if (user.getRole() != Users.Role.SELLER && user.getRole() != Users.Role.ADMIN) { %>
             <tr>
-                <td><%= rowNum++ %></td>
-                <td><%= user.getFullname() %></td>
-                <td><%= user.getEmail() %></td>
+                <td><%= rowNum++ %>
+                </td>
+                <td><%= user.getFullname() %>
+                </td>
+                <td><%= user.getEmail() %>
+                </td>
                 <td>
                     <% if (user.getStatus().equals(Users.Status.ACTIVE)) { %>
                     <form action="${pageContext.request.contextPath}/views/admin/admin_account" method="post"

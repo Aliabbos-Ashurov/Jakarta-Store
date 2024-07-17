@@ -67,6 +67,15 @@ public class AdminAccountServlet extends HttpServlet {
                 shopService.update(shop);
                 emailService.send(shop.getOwner().getEmail(), "FROM JAKARTA STORE PROJECT", MessageType.FOR_SELLER_BLOCKING);
             }
+            case "accept_shop" -> {
+                shop.setStatus(Shop.Status.ACTIVE);
+                shop.getOwner().setRole(Users.Role.SELLER);
+                userService.update(shop.getOwner());
+                shopService.update(shop);
+            }
+            case "cancel_shop" -> {
+                shopService.delete(shop.getId());
+            }
         }
         resp.sendRedirect(req.getContextPath() + "/views/admin/admin_account.jsp");
     }

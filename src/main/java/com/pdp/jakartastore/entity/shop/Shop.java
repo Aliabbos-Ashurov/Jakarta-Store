@@ -34,6 +34,6 @@ public class Shop extends BaseEntity {
 
 
     public enum Status {
-        NOT_ACTIVE, ACTIVE, DELETED
+        NOT_ACTIVE, ACTIVE, DELETED,WAITING
     }
 }

@@ -21,8 +21,8 @@ public class EmailServiceImpl implements EmailService {
                 .text("SORRY")
                 .html(messageType)
                 .build();
-        log.info(":::::::: EMAIL SUCCESFULLY SENT TO " + to + " ::::::::");
         messageHandler.send();
+        log.info(":::::::: EMAIL SUCCESFULLY SENT TO " + to + " ::::::::");
         return true;
     }
 }

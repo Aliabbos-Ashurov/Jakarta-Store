@@ -17,4 +17,6 @@ public interface ShopService extends BaseService<Shop, String> {
     List<Shop> getSellerShops(@NotBlank String sellerId);
 
     List<Shop> getByFilter();
+    List<Shop> getWaitingShops();
+    List<Shop> getShops();
 }
